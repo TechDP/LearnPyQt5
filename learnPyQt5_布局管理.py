@@ -14,10 +14,10 @@ class Example(QWidget):
         # print("show UI1")
         # self.initUI_1()
         # time.sleep(5)
-        # print("show UI2")
-        # self.initUI_2()
-        print("show UI3")
-        self.initUI_3()
+        print("show UI2")
+        self.initUI_2()
+        # print("show UI3")
+        # self.initUI_3()
 
 
     def initUI_1(self):
