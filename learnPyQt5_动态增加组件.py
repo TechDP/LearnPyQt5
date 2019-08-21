@@ -10,17 +10,14 @@ class DynamicallyAddComponents(QtWidgets.QWidget):
         self.initUI()
 
     def initUI(self):
-        self.QHBoxPushButton = QtWidgets.QHBoxLayout(self)
+        self.QHBox = QtWidgets.QHBoxLayout(self)
+        self.QVBoxPushButton = QtWidgets.QVBoxLayout(self)
         self.PushGroup = QtWidgets.QButtonGroup(self)
-
-        self.QHBoxLine = QtWidgets.QHBoxLayout(self)
-        self.Line = QtWidgets.QLineEdit(self)
-        self.QHBoxLine.addWidget(self.Line)
-        self.Line.setText("test")
 
         self.PushAdd = QtWidgets.QPushButton("增加一个控件", self)
         self.PushGroup.addButton(self.PushAdd)
-        self.QHBoxPushButton.addWidget(self.PushAdd)
+        self.QHBox.addWidget(self.PushAdd)
+        self.QHBox.addLayout(self.QVBoxPushButton)
         self.PushAdd.clicked.connect(self.AddComponents)
         self.PushGroup.buttonClicked[int].connect(self.ShowPushButtonText)
         
@@ -31,11 +28,11 @@ class DynamicallyAddComponents(QtWidgets.QWidget):
         # print(self.ComponentsCounter)
         self.PushX = QtWidgets.QPushButton(str(self.ComponentsCounter))
         self.PushGroup.addButton(self.PushX)
-        self.QHBoxPushButton.addWidget(self.PushX)
+        self.QVBoxPushButton.addWidget(self.PushX)
 
         self.LineX = QtWidgets.QLineEdit(self)
         self.LineX.setText(str(self.ComponentsCounter))
-        self.QHBoxPushButton.addWidget(self.LineX)
+        self.QVBoxPushButton.addWidget(self.LineX)
         self.LineX.textChanged[str].connect(self.ShowLineEditText)
         self.LineSet[str(self.ComponentsCounter)] = self.LineX
         self.ComponentsCounter += 1
